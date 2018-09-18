@@ -4,12 +4,12 @@ addons:
   sonarcloud:
     organization: "juliermeheinstein-github"
     token:
-      secure: 29a01b105336a190b12bc45eb9e1d69e9bb7359f
+      secure: $SONAR_SECURE
 script:
 - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
 
 deploy:
   provider: heroku
   api_key:
-    secure: "dc2b2484-d050-4779-a80c-d5152472a86d"
+    secure: $HEROKU_SECURE
   app: alejandro-app
