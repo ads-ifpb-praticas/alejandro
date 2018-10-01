@@ -1,1 +1,1 @@
-web: java -jar target/alejandro-1.0-SNAPSHOT.jar
+web: java -jar target/dependency/webapp-runner.jar target/*.war
