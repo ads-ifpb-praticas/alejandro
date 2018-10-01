@@ -3,6 +3,7 @@ package br.edu.ifpb.praticas.bd;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Conexao {
 
@@ -11,13 +12,10 @@ public class Conexao {
     private String senha = "avantasia";
     private Connection conexao;
 
-    public int abrirConexao() throws SQLException {
-        try {
-            conexao = DriverManager.getConnection(url,login,senha);
-            return 1;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } return 0;
+    public Statement abrirConexao() throws SQLException {
+        conexao = DriverManager.getConnection(url,login,senha);
+        System.out.println("Conexão realizada");
+        return conexao.createStatement();
     }
     public void fecharConexao() throws SQLException {
         try {
