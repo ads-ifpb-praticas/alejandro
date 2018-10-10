@@ -1,6 +1,0 @@
-Launcher.class
-br\edu\ifpb\praticas\interfaces\DAO.class
-br\edu\ifpb\praticas\bd\Postgres.class
-br\edu\ifpb\praticas\bd\Conexao.class
-br\edu\ifpb\praticas\entidade\Tarefa.class
-HelloWorldBean.class
