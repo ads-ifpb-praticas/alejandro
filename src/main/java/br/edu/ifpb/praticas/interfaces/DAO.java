@@ -5,6 +5,7 @@
  */
 package br.edu.ifpb.praticas.interfaces;
 
+import br.edu.ifpb.praticas.entidade.Tarefa;
 import java.sql.SQLException;
 
 /**
@@ -13,8 +14,9 @@ import java.sql.SQLException;
  */
 public interface DAO {
     
-    public void novaTarefa() throws SQLException;
-    /* public void editarTarefa() throws SQLException;
-    public void excluirTarefa() throws SQLException;
+    public void novaTarefa(Tarefa tarefa) throws SQLException;
+    /* public List<Tarefa> todasTarefas() throws SQLException;
+    public void excluirTarefa(int id) throws SQLException;
     */
+    
 }

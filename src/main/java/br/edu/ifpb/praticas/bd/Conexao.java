@@ -7,17 +7,17 @@ import java.sql.Statement;
 
 public class Conexao {
 
-    private String url = "postgresql://localhost:5432/alejandro";
+    private String url = "jdbc:postgresql://localhost:5432/alejandro";
     private String login = "postgres";
     private String senha = "avantasia";
     private Connection conexao;
 
-    public Statement abrirConexao() throws SQLException {
+    public Connection abrirConexao() throws SQLException, NullPointerException {
         conexao = DriverManager.getConnection(url,login,senha);
         System.out.println("Conexão realizada");
-        return conexao.createStatement();
+        return conexao;
     }
-    public void fecharConexao() throws SQLException {
+    public void fecharConexao() throws SQLException, NullPointerException {
         try {
             conexao.close();
         } catch (SQLException e) {
