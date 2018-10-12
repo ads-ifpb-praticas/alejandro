@@ -9,16 +9,7 @@
         <title>Alejandro</title>
     </h:head>
     <h:body>
-        <h1>
-            <ui:insert name="titulo">
-            Bem-vindo ao Alejandro!
-            </ui:insert>
-        </h1>
-        <h2>
-            <ui:insert name="subtitulo">
-            Seu agente pessoal de tarefas
-            </ui:insert>
-        </h2>
+        <ui:include src="WEB-INF/template.xhtml"/>
         <h:form id="nova">
                 <p:inputText id="nome" value="" ></p:inputText>
                 <p:inputText id="descricao" value="" ></p:inputText>

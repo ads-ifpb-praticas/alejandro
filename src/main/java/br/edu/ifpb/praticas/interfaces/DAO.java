@@ -5,7 +5,7 @@
  */
 package br.edu.ifpb.praticas.interfaces;
 
-import br.edu.ifpb.praticas.entidade.Tarefa;
+import br.edu.ifpb.praticas.domain.Tarefa;
 import java.sql.SQLException;
 
 /**

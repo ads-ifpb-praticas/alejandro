@@ -1,6 +1,6 @@
 package br.edu.ifpb.praticas.bd;
 
-import br.edu.ifpb.praticas.entidade.Tarefa;
+import br.edu.ifpb.praticas.domain.Tarefa;
 import br.edu.ifpb.praticas.interfaces.DAO;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

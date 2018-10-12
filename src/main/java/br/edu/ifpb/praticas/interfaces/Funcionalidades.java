@@ -5,9 +5,7 @@
  */
 package br.edu.ifpb.praticas.interfaces;
 
-import br.edu.ifpb.praticas.entidade.Tarefa;
-import java.sql.Date;
-import java.sql.Timestamp;
+import br.edu.ifpb.praticas.domain.Tarefa;
 
 /**
  *
@@ -15,8 +13,8 @@ import java.sql.Timestamp;
  */
 public interface Funcionalidades {
     
-    public void cadastrarData(String nome, Date data, Timestamp hora, String descricao);
-    public void cadastrar(String nome, String descricao);
+    public void cadastrarData(Tarefa tarefa);
+    public void cadastrar(Tarefa tarefa);
     public void excluir(Tarefa tarefa);
     
 }

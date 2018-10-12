@@ -5,10 +5,8 @@
  */
 package br.edu.ifpb.praticas.objneg;
 
-import br.edu.ifpb.praticas.entidade.Tarefa;
+import br.edu.ifpb.praticas.domain.Tarefa;
 import br.edu.ifpb.praticas.interfaces.Funcionalidades;
-import java.sql.Date;
-import java.sql.Timestamp;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -23,23 +21,21 @@ public class Controller implements Funcionalidades {
     @Inject
     private Tarefa tarefa;
     
-    public void cadastrarData(String nome, Date data, Timestamp hora, String descricao) {
+    public void cadastrarData(Tarefa tarefa) {
             int contador = 0;
-            contador += validador.nomeEmBranco(nome);
-            contador += validador.descricaoEmBranco(descricao);
-            contador += validador.dataRetroativa(data);
+            contador += validador.nomeEmBranco(tarefa.getNome());
+            contador += validador.descricaoEmBranco(tarefa.getDescricao());
+            contador += validador.dataRetroativa(tarefa.getData());
             if(contador == 3){
-                //tarefa = new Tarefa(nome, data, hora, descricao);
                 System.out.println("Tarefa cadastrada");
             } else System.out.println("Dados inválidos");
     }
     
-    public void cadastrar(String nome, String descricao) {
+    public void cadastrar(Tarefa tarefa) {
         int contador = 0;
-        contador += validador.nomeEmBranco(nome);
-        contador += validador.descricaoEmBranco(descricao);
+        contador += validador.nomeEmBranco(tarefa.getNome());
+        contador += validador.descricaoEmBranco(tarefa.getDescricao());
         if(contador == 2){
-                tarefa = new Tarefa(nome, descricao);
                 System.out.println("Tarefa cadastrada");
         } else System.out.println("Dados inválidos");
     }

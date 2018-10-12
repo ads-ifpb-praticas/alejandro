@@ -5,9 +5,7 @@
  */
 package br.edu.ifpb.praticas.objneg;
 
-import br.edu.ifpb.praticas.entidade.Tarefa;
-import java.sql.Date;
-import java.util.Calendar;
+import java.time.LocalDate;
 
 /**
  *
@@ -15,8 +13,8 @@ import java.util.Calendar;
  */
 public class Validador {
     
-    public int dataRetroativa(Date data) {
-        if (Calendar.getInstance().before(this)) { return 0; }
+    public int dataRetroativa(LocalDate data) {
+        if (LocalDate.now().compareTo(data) < 0) return 0;
         return 1;
     }
     
