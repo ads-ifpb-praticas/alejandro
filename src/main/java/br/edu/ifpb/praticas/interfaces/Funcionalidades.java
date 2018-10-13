@@ -6,6 +6,7 @@
 package br.edu.ifpb.praticas.interfaces;
 
 import br.edu.ifpb.praticas.domain.Tarefa;
+import java.util.List;
 
 /**
  *
@@ -16,5 +17,6 @@ public interface Funcionalidades {
     public void cadastrarData(Tarefa tarefa);
     public void cadastrar(Tarefa tarefa);
     public void excluir(Tarefa tarefa);
+    public List<Tarefa> listar();
     
 }

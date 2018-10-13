@@ -7,6 +7,8 @@ package br.edu.ifpb.praticas.objneg;
 
 import br.edu.ifpb.praticas.domain.Tarefa;
 import br.edu.ifpb.praticas.interfaces.Funcionalidades;
+import java.util.ArrayList;
+import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -17,6 +19,7 @@ import javax.inject.Named;
 @Named("controller")
 public class Controller implements Funcionalidades {
     
+    ArrayList<Tarefa> tarefas = new ArrayList();
     private Validador validador;
     @Inject
     private Tarefa tarefa;
@@ -27,6 +30,7 @@ public class Controller implements Funcionalidades {
             contador += validador.descricaoEmBranco(tarefa.getDescricao());
             contador += validador.dataRetroativa(tarefa.getData());
             if(contador == 3){
+                tarefas.add(tarefa);
                 System.out.println("Tarefa cadastrada");
             } else System.out.println("Dados inválidos");
     }
@@ -36,12 +40,18 @@ public class Controller implements Funcionalidades {
         contador += validador.nomeEmBranco(tarefa.getNome());
         contador += validador.descricaoEmBranco(tarefa.getDescricao());
         if(contador == 2){
+                tarefas.add(tarefa);
                 System.out.println("Tarefa cadastrada");
         } else System.out.println("Dados inválidos");
     }
 
     public void excluir(Tarefa tarefa) {
+        tarefas.remove(this);
         System.out.println("Tarefa excluída");
+    }
+
+    public List<Tarefa> listar() {
+        return tarefas;      
     }
         
 }
