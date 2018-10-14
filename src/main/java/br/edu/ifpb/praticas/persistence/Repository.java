@@ -3,19 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.praticas.objneg;
+package br.edu.ifpb.praticas.persistence;
 
-import br.edu.ifpb.praticas.domain.Tarefa;
 import java.util.List;
 
 /**
  *
  * @author Lestat
  */
-public interface Service {
+public interface Repository<T> {
     
-    List<Tarefa> listar();
-    void cadastrar(Tarefa tarefa);
-    void remover(Tarefa tarefa);
+    void add(T t);
+    void remove(T t);
+    List<T> get();
     
 }

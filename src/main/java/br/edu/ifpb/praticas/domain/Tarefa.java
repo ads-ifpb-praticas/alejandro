@@ -3,16 +3,25 @@ package br.edu.ifpb.praticas.domain;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Random;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Tarefa implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tarefa_id")
     private int id;
+    @Column(length = 100, nullable = false, unique = true)
     private String nome;
+    @Temporal(TemporalType.DATE)
     private LocalDate data;
+    @Column(length = 150)
     private String descricao;
 
     public Tarefa() {
@@ -34,11 +43,6 @@ public class Tarefa implements Serializable {
     public String getDescricao() { return descricao; }
     public void setDescricao(String descricao) { this.descricao = descricao; }
    
-    public int geraID(){
-        int id = new Random().nextInt(5);
-        return id;
-    }
-
     @Override
     public String toString() {
         return "Tarefa{" + "id=" + id + ", nome=" + nome + ", data=" + data + ", descricao=" + descricao + '}';

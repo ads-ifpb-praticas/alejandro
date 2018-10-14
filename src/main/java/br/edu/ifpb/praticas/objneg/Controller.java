@@ -6,9 +6,9 @@
 package br.edu.ifpb.praticas.objneg;
 
 import br.edu.ifpb.praticas.domain.Tarefa;
-import br.edu.ifpb.praticas.interfaces.Funcionalidades;
-import java.util.ArrayList;
+import br.edu.ifpb.praticas.qualifier.ServicoTarefa;
 import java.util.List;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -17,41 +17,27 @@ import javax.inject.Named;
  * @author Lestat
  */
 @Named("controller")
-public class Controller implements Funcionalidades {
+@RequestScoped
+public class Controller {
     
-    ArrayList<Tarefa> tarefas = new ArrayList();
-    private Validador validador;
+    @Inject
+    @ServicoTarefa
+    private Service service;
     @Inject
     private Tarefa tarefa;
     
-    public void cadastrarData(Tarefa tarefa) {
-            int contador = 0;
-            contador += validador.nomeEmBranco(tarefa.getNome());
-            contador += validador.descricaoEmBranco(tarefa.getDescricao());
-            contador += validador.dataRetroativa(tarefa.getData());
-            if(contador == 3){
-                tarefas.add(tarefa);
-                System.out.println("Tarefa cadastrada");
-            } else System.out.println("Dados inválidos");
-    }
-    
-    public void cadastrar(Tarefa tarefa) {
-        int contador = 0;
-        contador += validador.nomeEmBranco(tarefa.getNome());
-        contador += validador.descricaoEmBranco(tarefa.getDescricao());
-        if(contador == 2){
-                tarefas.add(tarefa);
-                System.out.println("Tarefa cadastrada");
-        } else System.out.println("Dados inválidos");
+    public String cadastrar(Tarefa tarefa) {
+       service.cadastrar(tarefa);
+       return "index?faces-redirect=true";
     }
 
-    public void excluir(Tarefa tarefa) {
-        tarefas.remove(this);
-        System.out.println("Tarefa excluída");
+    public String excluir(Tarefa tarefa) {
+        service.remover(tarefa);
+        return "index?faces-redirect=true";
     }
 
     public List<Tarefa> listar() {
-        return tarefas;      
+        return service.listar();      
     }
         
 }
