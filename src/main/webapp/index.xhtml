@@ -11,19 +11,18 @@
     <h:body>
         <ui:include src="WEB-INF/template.xhtml"/>
         <h:form id="nova">
-            <p:inputText id="nome" value="#{service.tarefa.nome}" >
+            <p:inputText id="nome" value="#{controller.tarefa.nome}" >
                 <f:validator validatorId="nomeValidador" />
             </p:inputText>
-            <p:inputText id="descricao" value="#{service.tarefa.descricao}" >
+            <p:inputText id="descricao" value="#{controller.tarefa.descricao}" >
                 <f:validator validatorId="descricaoValidador" />
             </p:inputText>
-            <h:inputText id="data" value="#{service.tarefa.data}" required="true">
-            <f:convertDateTime pattern="dd-MM-yyyy" />
-            </h:inputText>
-            <p:commandButton action="#{service.cadastrar()}" value="cadastrar" ></p:commandButton>
+            <p:calendar mask="dd/MM/yyyy" id="data" value="#{controller.tarefa.data}" required="true">
+            </p:calendar>
+            <p:commandButton action="#{controller.cadastrar()}" value="cadastrar" ></p:commandButton>
             </h:form>
             <p></p>
-            <p:dataTable class="tarefas" value="#{tarefa.listar}" var="tarefa">
+            <p:dataTable class="tarefas" var="tarefa">
                 <p:column id="nome" field="#{tarefa.getNome()}"></p:column>
                 <p:column id="descricao" field="#{tarefa.getDescricao()}"></p:column>
                 <p:column id="data" field="#{tarefa.getData()}"></p:column>

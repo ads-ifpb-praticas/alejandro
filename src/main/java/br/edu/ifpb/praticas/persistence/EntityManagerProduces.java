@@ -5,20 +5,26 @@
  */
 package br.edu.ifpb.praticas.persistence;
 
+import java.io.Serializable;
+import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Produces;
+import javax.inject.Named;
+import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
 /**
  *
  * @author Lestat
  */
-public class EntityManagerProduces {
+@Named
+@SessionScoped
+public class EntityManagerProduces implements Serializable{
     
-    private static EntityManagerProduces manager;
+    private static EntityManager manager;
     
     @Produces
-    public static EntityManagerProduces getEntityManager() {
-        manager = (EntityManagerProduces) Persistence
+    public static EntityManager getEntityManager() {
+        manager =  Persistence
                 .createEntityManagerFactory("alejandro")
                 .createEntityManager();
         return manager;

@@ -1,8 +1,8 @@
 package br.edu.ifpb.praticas.domain;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Random;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,15 +19,15 @@ public class Tarefa implements Serializable {
     private int id;
     @Column(length = 100, nullable = false, unique = true)
     private String nome;
-    @Temporal(TemporalType.DATE)
-    private LocalDate data;
+    @Column(length = 10)
+    private String data;
     @Column(length = 150)
     private String descricao;
 
     public Tarefa() {
     }
 
-    public Tarefa(int id, String nome, LocalDate data, String descricao) {
+    public Tarefa(int id, String nome, String data, String descricao) {
         this.id = id;
         this.nome = nome;
         this.data = data;
@@ -38,8 +38,8 @@ public class Tarefa implements Serializable {
     public void setId(int id) { this.id = id; }
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
-    public LocalDate getData() { return data; }
-    public void setData(LocalDate data) { this.data = data; }
+    public String getData() { return data; }
+    public void setData(String data) { this.data = data; }
     public String getDescricao() { return descricao; }
     public void setDescricao(String descricao) { this.descricao = descricao; }
    

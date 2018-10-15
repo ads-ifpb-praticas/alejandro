@@ -5,22 +5,28 @@
  */
 package br.edu.ifpb.praticas.persistence;
 
-import br.edu.ifpb.praticas.qualifier.RepositorioTarefa;
 import br.edu.ifpb.praticas.domain.Tarefa;
 import java.util.List;
-import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import javax.persistence.EntityManager;
 
 /**
  *
  * @author Lestat
  */
-@RepositorioTarefa
-public class TarefaRepository implements Repository<Tarefa> {
-    
-    @Inject
-    private EntityManager manager;
 
+//@RepositorioTarefa
+@Singleton
+public class TarefaRepository {
+    
+//    @Inject
+//    @PersistenceContext
+    private EntityManager manager;
+    private static TarefaRepository instance;
+    public TarefaRepository(){}
+    
+    
     public void add(Tarefa t) {
         manager.getTransaction().begin();
         manager.persist(t);
@@ -34,7 +40,7 @@ public class TarefaRepository implements Repository<Tarefa> {
     }
 
     public List<Tarefa> get() {
-        return manager.createQuery("FROM Tarefa t ORDER BY t.data").getResultList();
+        return manager.createQuery("FROM Tarefa t ORDER BY t.nome").getResultList();
     }
     
 }

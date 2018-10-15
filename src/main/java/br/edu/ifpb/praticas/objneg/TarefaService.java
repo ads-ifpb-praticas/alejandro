@@ -5,23 +5,26 @@
  */
 package br.edu.ifpb.praticas.objneg;
 
-import br.edu.ifpb.praticas.persistence.Repository;
-import br.edu.ifpb.praticas.qualifier.ServicoTarefa;
 import br.edu.ifpb.praticas.domain.Tarefa;
-import br.edu.ifpb.praticas.qualifier.RepositorioTarefa;
+import br.edu.ifpb.praticas.persistence.TarefaRepository;
 import java.util.List;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 /**
  *
  * @author Lestat
  */
-@ServicoTarefa
-public class TarefaService implements Service {
+@RequestScoped
+//@ServicoTarefa
+public class TarefaService {
+
+    public TarefaService() {
+    
+    }
     
     @Inject
-    @RepositorioTarefa
-    private Repository<Tarefa> repository;
+    private TarefaRepository repository;
 
     public List<Tarefa> listar() {
         return repository.get();

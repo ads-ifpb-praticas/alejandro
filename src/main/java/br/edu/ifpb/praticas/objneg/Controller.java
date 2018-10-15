@@ -7,8 +7,10 @@ package br.edu.ifpb.praticas.objneg;
 
 import br.edu.ifpb.praticas.domain.Tarefa;
 import br.edu.ifpb.praticas.qualifier.ServicoTarefa;
+import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -17,27 +19,35 @@ import javax.inject.Named;
  * @author Lestat
  */
 @Named("controller")
-@RequestScoped
-public class Controller {
+@SessionScoped
+public class Controller  implements Serializable{
     
     @Inject
-    @ServicoTarefa
-    private Service service;
-    @Inject
-    private Tarefa tarefa;
+    private TarefaService service;
+    private Tarefa tarefa = new Tarefa();
     
-    public String cadastrar(Tarefa tarefa) {
+    public String cadastrar() {
        service.cadastrar(tarefa);
+       tarefa = new Tarefa();
        return "index?faces-redirect=true";
     }
 
-    public String excluir(Tarefa tarefa) {
+    public String excluir() {
         service.remover(tarefa);
+        tarefa = new Tarefa();
         return "index?faces-redirect=true";
     }
 
-    public List<Tarefa> listar() {
-        return service.listar();      
+  public List<Tarefa> listarAll(){
+      return service.listar();
+              
+  }
+    public Tarefa getTarefa() {
+        return tarefa;
+    }
+
+    public void setTarefa(Tarefa tarefa) {
+        this.tarefa = tarefa;
     }
         
 }
